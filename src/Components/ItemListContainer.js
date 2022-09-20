@@ -1,11 +1,13 @@
+import '../style/ItemListContainer.css';
 import { useState, useEffect } from "react";
 
 
-const ItemListContainer = () => {
+const ItemListContainer = ({ greeting }) => {
     return ( 
-        <>
-        ItemListContainer
-        </>
+        <div className="ItemListContainer">
+            <h1>Productos</h1>
+            <h3 className="greeting">{greeting}</h3>
+        </div>
     );
 }
 
