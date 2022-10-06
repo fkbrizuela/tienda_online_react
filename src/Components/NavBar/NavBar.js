@@ -1,26 +1,24 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import CartWidget from '../CartWidget/CartWidget.js';
-import '../CartWidget/CartWidget.css'
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import CartWidget from "../CartWidget/CartWidget";
 
 const NavBar = () => {
     return (
-        <>
-            <Navbar bg="primary" variant="dark">
-                <Container>
-                    <Navbar.Brand href="#home">Tienda de Productos</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#productos">Productos</Nav.Link>
-                        <Nav.Link href="#accesorios">Accesorios</Nav.Link>
-                        <Nav.Link href="#informacion">Información</Nav.Link>
-                        <Nav.Link href="#nosotros">Nosotros</Nav.Link>
-                    </Nav>
-                    <CartWidget/>
-                </Container>
-            </Navbar>
-        </>
+        <Navbar bg="primary" variant="dark">
+        <Container>
+            <Navbar.Brand as={Link} to='/'>
+            Tienda de Productos
+            </Navbar.Brand>
+            <Nav className="me-auto">
+            <Nav.Link as={Link} to='/'>
+                Home
+            </Nav.Link>
+            <Nav.Link as={Link} to='/category/carne'>Con Carne</Nav.Link>
+            <Nav.Link as={Link} to='/category/vegetariana'>Vegetariana</Nav.Link>
+            </Nav>
+            <CartWidget />
+        </Container>
+        </Navbar>
     )
 }
 

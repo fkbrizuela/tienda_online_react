@@ -1,13 +1,32 @@
-import ItemCount from '../ItemCount/ItemCount';
 import './ItemListContainer.css';
+import Container from 'react-bootstrap/Container';
+import { useEffect, useState } from 'react';
+import ItemList from '../ItemList/ItemList';
+import { useParams } from 'react-router-dom';
+import { getAllProducts, getProducts, getProductsByCategory } from '../../Utils/products';
 
 const ItemListContainer = ({ greeting }) => {
-    return ( 
-        <div className="ItemListContainer">
-            <h1>Productos</h1>
-            <h3 className="greeting">{greeting}</h3>
-            <ItemCount/>
-        </div>
+    const { categoryId } = useParams();
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        if (categoryId) {
+        getProductsByCategory(categoryId)
+            .then((data) => setProducts(data))
+            .catch((error) => console.warn(error))
+        } else {
+        getAllProducts()
+            .then((data) => setProducts(data))
+            .catch((error) => console.warn(error))
+        }
+    }, [categoryId])
+
+    return (
+        <Container>
+        <h1>Productos</h1>
+        <h3 className="greeting">{greeting}</h3>
+        <ItemList products={products} />
+        </Container>
     );
 }
 
