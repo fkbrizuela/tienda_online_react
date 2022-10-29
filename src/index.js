@@ -4,6 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyB-sd1Gm3pD_7xvgVBXzSO_OV2TSh9LR-U",
+  authDomain: "tienda-online-1962d.firebaseapp.com",
+  projectId: "tienda-online-1962d",
+  storageBucket: "tienda-online-1962d.appspot.com",
+  messagingSenderId: "956639759954",
+  appId: "1:956639759954:web:d8a733e9ab90832cdf198b"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
