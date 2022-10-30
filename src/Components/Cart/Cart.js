@@ -1,16 +1,41 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import CartContext from "../../Context/CartContext";
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { createOrder } from "../../Utils/orders";
+import OrderModal from "../OrderModal/OrderModal";
 import './Cart.css';
+
+const buyerMock = {
+  name: 'coderhouse',
+  phone: '1122334455',
+  email: 'coderhouse@mail.com'
+}
 
 const Cart = () => {
   const { cart, total, removeItem, clear } = useContext(CartContext);
   console.log({cart});
+  const [showModal, setShowModal] = useState(false);
+  const [orderId, setOrderId] = useState();
 
   const handleRemove = (itemId) => {
     removeItem(itemId);
+  }
+
+  const handleOpen = () => setShowModal(true);
+
+  const handleClose = () => setShowModal(false);
+
+  const handleBuy = async () => {
+    const newOrder = {
+      buyer: buyerMock,
+      items: cart,
+      total
+    };
+    const newOrderId = await createOrder(newOrder);
+    setOrderId(newOrderId);
+    clear();
   }
 
   const showTable = cart.length > 0
@@ -41,7 +66,7 @@ const Cart = () => {
             </tbody>
           </Table>
           <h3>Total: $ {total}</h3>
-          {/* <Button variant="success" onClick={handleOpen}>Finalizar compra</Button> */}
+          <Button variant="success" onClick={handleOpen}>Finalizar compra</Button>
         </>
       )}
       {!showTable && (
@@ -52,6 +77,12 @@ const Cart = () => {
           </Link>
         </>
       )}
+      <OrderModal
+        showModal={showModal}
+        onClose={handleClose}
+        onBuy={handleBuy}
+        orderId={orderId}
+      />
     </Container>
   );
 }
