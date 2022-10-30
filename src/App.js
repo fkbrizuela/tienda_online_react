@@ -11,7 +11,7 @@ import { CartProvider } from './Context/CartContext';
 function App() {
   
   return (
-      <BrowserRouter /* basename='/tienda_online_react' */>
+      <BrowserRouter basename='/tienda_online_react'>
         <CartProvider>
           <NavBar />
           <Routes>
