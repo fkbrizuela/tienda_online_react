@@ -6,15 +6,12 @@ import ItemDetailContainer from './Components/ItemDetail/ItemDetailContainer';
 import Checkout from './Components/Checkout/Checkout';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cart from './Components/Cart/Cart';
-import { useEffect } from 'react';
-import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
 import { CartProvider } from './Context/CartContext';
-/* import SwApiContainer from './Components/ComponentesDePrueba/swapi/SwApiContainer.js'; */
+
 function App() {
   
   return (
-    <div>
-      <BrowserRouter >
+      <BrowserRouter /* basename='/tienda_online_react' */>
         <CartProvider>
           <NavBar />
           <Routes>
@@ -26,7 +23,6 @@ function App() {
           </Routes>
         </CartProvider>
       </BrowserRouter>
-    </div>
   );
 }
 
