@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://github.com/fkbrizuela/tienda_online_react",
+  "homepage": "https://fkbrizuela.github.io/tienda_online_react/",
   "eslintConfig": {
     "extends": [
       "react-app",
