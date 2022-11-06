@@ -1,4 +1,6 @@
 .itemList {
   margin-top: 64px; 
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

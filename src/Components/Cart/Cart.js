@@ -72,6 +72,9 @@ const Cart = () => {
           <h3>Total: $ {total}</h3>
           <Button variant="success" onClick={handleOpen}>Finalizar compra</Button>
           <Button variant="danger" onClick={handleDelete}>Vaciar Carrito</Button>
+          <Link to='/'>
+            <Button variant="success">Seguir comprando</Button>
+          </Link>
         </>
       )}
       {!showTable && (

@@ -1,10 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import './Item.css'
 
 const Item = ({ product }) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '16rem' }} className="item">
       <Card.Img variant="top" src={product.pictureUrl} />
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
